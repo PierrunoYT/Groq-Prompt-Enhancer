@@ -10,7 +10,6 @@ This project provides a user-friendly web interface for generating text using Gr
 - Adjustable parameters:
   - Temperature
   - Max Tokens
-  - Top K
   - Top P
 - Real-time streaming of generated text
 

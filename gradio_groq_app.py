@@ -5,7 +5,7 @@ import os
 # Initialize Groq client
 client = Groq()
 
-def generate_text(system_prompt, user_prompt, chat_history, temperature=0.7, max_tokens=1024, top_k=50, top_p=1):
+def generate_text(system_prompt, user_prompt, chat_history, temperature=0.7, max_tokens=1024, top_p=1):
     messages = [{"role": "system", "content": system_prompt}]
     for human, ai in chat_history:
         messages.append({"role": "user", "content": human})
@@ -17,7 +17,6 @@ def generate_text(system_prompt, user_prompt, chat_history, temperature=0.7, max
         messages=messages,
         temperature=temperature,
         max_tokens=max_tokens,
-        top_k=top_k,
         top_p=top_p,
         stream=True,
         stop=None,
@@ -43,14 +42,13 @@ with gr.Blocks() as iface:
         with gr.Column(scale=1):
             temperature = gr.Slider(minimum=0, maximum=1, step=0.1, label="Temperature", value=0.7)
             max_tokens = gr.Slider(minimum=1, maximum=4096, step=1, label="Max Tokens", value=1024)
-            top_k = gr.Slider(minimum=1, maximum=100, step=1, label="Top K", value=50)
             top_p = gr.Slider(minimum=0, maximum=1, step=0.01, label="Top P", value=1)
     
     submit_button = gr.Button("Submit")
     
     submit_button.click(
         generate_text,
-        inputs=[system_prompt, user_input, chatbot, temperature, max_tokens, top_k, top_p],
+        inputs=[system_prompt, user_input, chatbot, temperature, max_tokens, top_p],
         outputs=chatbot
     )
 
