@@ -42,7 +42,7 @@ with gr.Blocks() as iface:
         
         with gr.Column(scale=1):
             temperature = gr.Slider(minimum=0, maximum=1, step=0.1, label="Temperature", value=0.7)
-            max_tokens = gr.Slider(minimum=1, maximum=2048, step=1, label="Max Tokens", value=1024)
+            max_tokens = gr.Slider(minimum=1, maximum=4096, step=1, label="Max Tokens", value=1024)
             top_k = gr.Slider(minimum=1, maximum=100, step=1, label="Top K", value=50)
             top_p = gr.Slider(minimum=0, maximum=1, step=0.01, label="Top P", value=1)
     
