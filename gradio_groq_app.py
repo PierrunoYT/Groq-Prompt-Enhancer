@@ -36,7 +36,7 @@ iface = gr.Interface(
     fn=generate_text,
     inputs=[
         gr.Textbox(lines=3, label="System Prompt", placeholder="Enter the system prompt here..."),
-        gr.Textbox(lines=5, label="User Prompt", placeholder="Enter your prompt here..."),
+        gr.Textbox(lines=5, label="User Input", placeholder="Enter your message or question here..."),
         gr.Slider(minimum=0, maximum=1, step=0.1, label="Temperature", value=1),
         gr.Slider(minimum=1, maximum=2048, step=1, label="Max Tokens", value=1024),
     ],
