@@ -30,7 +30,7 @@ def generate_text(system_prompt, user_prompt, chat_history, temperature=0.7, max
 
 # Create Gradio interface
 with gr.Blocks() as iface:
-    gr.Markdown("# Groq Text Generation")
+    gr.Markdown("# Groq Prompt Generation")
     gr.Markdown("Generate text using Groq's llama-3.1-70b-versatile model. You can provide both a system prompt and a user prompt.")
     
     with gr.Row():

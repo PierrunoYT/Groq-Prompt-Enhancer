@@ -1,4 +1,4 @@
-# Groq Text Generation with Gradio Interface
+# Groq Prompt Generation with Gradio Interface
 
 This project provides a user-friendly web interface for generating text using Groq's llama-3.1-70b-versatile model. It utilizes the Gradio library to create an interactive UI where users can input prompts and adjust various parameters to control the text generation process.
 
