@@ -5,13 +5,17 @@ import os
 # Initialize Groq client
 client = Groq()
 
-def generate_text(prompt, temperature=1, max_tokens=1024):
+def generate_text(system_prompt, user_prompt, temperature=1, max_tokens=1024):
     completion = client.chat.completions.create(
         model="llama-3.1-70b-versatile",
         messages=[
             {
+                "role": "system",
+                "content": system_prompt
+            },
+            {
                 "role": "user",
-                "content": prompt
+                "content": user_prompt
             }
         ],
         temperature=temperature,
@@ -31,13 +35,14 @@ def generate_text(prompt, temperature=1, max_tokens=1024):
 iface = gr.Interface(
     fn=generate_text,
     inputs=[
-        gr.Textbox(lines=5, label="Enter your prompt"),
+        gr.Textbox(lines=3, label="System Prompt", placeholder="Enter the system prompt here..."),
+        gr.Textbox(lines=5, label="User Prompt", placeholder="Enter your prompt here..."),
         gr.Slider(minimum=0, maximum=1, step=0.1, label="Temperature", value=1),
         gr.Slider(minimum=1, maximum=2048, step=1, label="Max Tokens", value=1024),
     ],
     outputs=gr.Textbox(lines=10, label="Generated Text"),
     title="Groq Text Generation",
-    description="Generate text using Groq's llama-3.1-70b-versatile model.",
+    description="Generate text using Groq's llama-3.1-70b-versatile model. You can provide both a system prompt and a user prompt.",
     live=True,
 )
 
