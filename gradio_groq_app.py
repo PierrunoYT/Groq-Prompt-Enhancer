@@ -5,7 +5,7 @@ import os
 # Initialize Groq client
 client = Groq()
 
-def generate_text(system_prompt, user_prompt, temperature=0.7, max_tokens=1024):
+def generate_text(system_prompt, user_prompt, temperature=0.7, max_tokens=1024, top_k=50, top_p=1):
     completion = client.chat.completions.create(
         model="llama-3.1-70b-versatile",
         messages=[
@@ -20,7 +20,8 @@ def generate_text(system_prompt, user_prompt, temperature=0.7, max_tokens=1024):
         ],
         temperature=temperature,
         max_tokens=max_tokens,
-        top_p=1,
+        top_k=top_k,
+        top_p=top_p,
         stream=True,
         stop=None,
     )
@@ -39,6 +40,8 @@ iface = gr.Interface(
         gr.Textbox(lines=5, label="User Input", placeholder="Enter your message or question here..."),
         gr.Slider(minimum=0, maximum=1, step=0.1, label="Temperature", value=0.7),
         gr.Slider(minimum=1, maximum=2048, step=1, label="Max Tokens", value=1024),
+        gr.Slider(minimum=1, maximum=100, step=1, label="Top K", value=50),
+        gr.Slider(minimum=0, maximum=1, step=0.01, label="Top P", value=1),
     ],
     outputs=gr.Textbox(lines=10, label="Generated Text"),
     title="Groq Text Generation",
