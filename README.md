@@ -29,14 +29,24 @@ Before you begin, ensure you have met the following requirements:
    cd <repository-directory>
    ```
 
-2. Install the required dependencies:
+2. Create and activate a virtual environment:
+   ```
+   python -m venv venv
+   venv\Scripts\activate  # On Windows
+   # OR
+   source venv/bin/activate  # On macOS and Linux
+   ```
+
+3. Install the required dependencies:
    ```
    pip install gradio groq
    ```
 
-3. Set up your Groq API key as an environment variable:
+4. Set up your Groq API key as an environment variable:
    ```
-   export GROQ_API_KEY=your_api_key_here
+   set GROQ_API_KEY=your_api_key_here  # On Windows
+   # OR
+   export GROQ_API_KEY=your_api_key_here  # On macOS and Linux
    ```
 
 ## Usage
