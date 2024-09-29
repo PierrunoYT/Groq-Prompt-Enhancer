@@ -72,7 +72,7 @@ Contributions to this project are welcome. Please feel free to submit a Pull Req
 
 ## License
 
-[Specify your license here]
+This project is licensed under the terms of the [LICENSE](LICENSE) file.
 
 ## Acknowledgements
 
